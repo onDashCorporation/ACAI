@@ -3,10 +3,11 @@ import Nav from "../../components/nav/nav";
 import Header from "../../components/header/header";
 import Dropdown from "../../components/dropdown/dropdown"
 import { useState } from "react";
+import Search  from "../../components/search/search";
 
 const solicitacoes = () => {
   const [filterop, setFilterop] = useState("Filtro");
-
+  const options = ["Categoria","Tipo", "Departamento","Categoria","Tipo", "Departamento","Categoria","Tipo", "Departamento" ]
 
 
   return (
@@ -23,8 +24,8 @@ const solicitacoes = () => {
                 <S.Op>Historico</S.Op>
               </S.Option>
               <S.SearchContainer>
-                <S.Search type="search" placeholder="pesquise" />
                 <Dropdown filterop={filterop} setFilterop={setFilterop}/>
+                <Search placeholder="oi" options={options}/>
               </S.SearchContainer>
             </S.Header>
           </S.Setcion>

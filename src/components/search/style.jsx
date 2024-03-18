@@ -1,0 +1,60 @@
+import styled from "styled-components";
+
+export const Body = styled.div`
+    width: 190px;
+    user-select: none;
+    align-items: center;
+    border-radius: 10px;
+
+`;
+export const Container = styled.div`
+    width: 100%;
+    
+
+`;
+export const SearchContainer = styled.div`
+    width: 100%;
+    
+
+`;
+export const SearchInput = styled.input`
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid rgb(182, 181, 181);
+  transition: all 0.5s ease ;
+  background-color: #ffffff;
+  
+  
+  &:focus{
+    border: 1.5px solid #4e8fd9;
+
+
+  }
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+`;
+export const ContainerOp = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    background-color: aliceblue;
+    font-weight: 500;
+    color: #333;
+    width: 100%;
+
+`;
+export const Op = styled.text`
+font-size: 14px;
+padding: 5px;
+cursor: pointer;
+transition: all 0.2s;
+
+&:hover{
+    background-color: #e0e8f0;
+
+
+}
+`;
