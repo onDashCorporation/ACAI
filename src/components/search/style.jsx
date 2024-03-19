@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
-export const Body = styled.div`
-    width: 190px;
-    user-select: none;
-    align-items: center;
-    border-radius: 10px;
 
-`;
 export const Container = styled.div`
     width: 100%;
     
@@ -36,10 +30,28 @@ export const SearchInput = styled.input`
     appearance: none;
   }
 `;
+export const ContainerResults = styled.div`
+display: flex;
+flex-direction: column;
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 100px;
+  width: 100%; 
+
+
+
+
+  &::-webkit-scrollbar{
+    display: none;
+  }
+
+`; 
+
 export const ContainerOp = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+    padding: 2px;
     background-color: aliceblue;
     font-weight: 500;
     color: #333;

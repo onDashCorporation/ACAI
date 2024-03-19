@@ -16,7 +16,7 @@ export const Container = styled.div`
   width: 100%;
   height: 90vh;
 `;
-export const Setcion = styled.div`
+export const Section = styled.div`
   margin-top: 40px;
   display: flex;
   flex-direction: column;
@@ -54,4 +54,5 @@ export const SearchContainer = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 40px;
+  width: 300px;
 `;

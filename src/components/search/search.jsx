@@ -1,34 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./style";
 
 const Search = ({ options }) => {
-  const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
+  const [inputSearch, setInputSearch] = useState("")
+  const [filterSearch, setFilterSearch] = useState([])
+
+  // const para normalizar as str 
+  const normalizeString = (str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  };
+  
+  const handleFilter = (event) => {
+    const searchValue = event.target.value;
+    setInputSearch(searchValue);
+
+    const normalizedSearch = normalizeString(searchValue.toLowerCase());
+
+    const newFilter = options.filter(value => {
+      const normalizedProduct = normalizeString(value.produto.toLowerCase());
+      return normalizedProduct.includes(normalizedSearch);
+    });
+
+    setFilterSearch(newFilter);
   };
 
-  const filteredOptions = options.filter(option =>
-    option.toLowerCase().startsWith(searchTerm.toLowerCase())
-  );
+  useEffect(() => {
+    if(inputSearch === ""){
+      setFilterSearch([])
+    }
+  }, [inputSearch])
 
   return (
-    <S.Body>
+    <S.Container>
+
       <S.SearchContainer>
         <S.SearchInput
           type="text"
           placeholder="Pesquise"
-          value={searchTerm}
-          onChange={handleSearchChange}
+          value={inputSearch}
+          onChange={handleFilter}
         />
-        </S.SearchContainer>
+      </S.SearchContainer>
 
-          {filteredOptions.map(option => (
-            <S.ContainerOp key={option}>
-              <S.Op>{option}</S.Op>
+      {filterSearch !== 0 &&
+        <S.ContainerResults>
+          {filterSearch.map(value => (
+            <S.ContainerOp key={value.id} >
+            <S.Op >{value.produto}</S.Op>
             </S.ContainerOp>
           ))}
-    </S.Body>
+        </S.ContainerResults>
+      }
+
+    </S.Container>
   );
 };
 

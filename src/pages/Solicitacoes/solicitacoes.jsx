@@ -4,10 +4,9 @@ import Header from "../../components/header/header";
 import Dropdown from "../../components/dropdown/dropdown"
 import { useState } from "react";
 import Search  from "../../components/search/search";
-
+import Options from "./db.json"
 const solicitacoes = () => {
   const [filterop, setFilterop] = useState("Filtro");
-  const options = ["Categoria","Tipo", "Departamento","Categoria","Tipo", "Departamento","Categoria","Tipo", "Departamento" ]
 
 
   return (
@@ -16,7 +15,7 @@ const solicitacoes = () => {
       <S.Main>
         <Nav />
         <S.Container>
-          <S.Setcion>
+          <S.Section>
             <S.Title>Solicitações</S.Title>
             <S.Header>
               <S.Option>
@@ -25,10 +24,10 @@ const solicitacoes = () => {
               </S.Option>
               <S.SearchContainer>
                 <Dropdown filterop={filterop} setFilterop={setFilterop}/>
-                <Search placeholder="oi" options={options}/>
+                <Search placeholder="oi" options={Options}/>
               </S.SearchContainer>
             </S.Header>
-          </S.Setcion>
+          </S.Section>
         </S.Container>
       </S.Main>
     </S.Body>
