@@ -55,4 +55,5 @@ export const SearchContainer = styled.div`
   align-items: center;
   gap: 40px;
   width: 300px;
+  height: 50px;
 `;

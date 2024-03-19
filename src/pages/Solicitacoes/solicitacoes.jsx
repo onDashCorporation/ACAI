@@ -25,7 +25,9 @@ const solicitacoes = () => {
               <S.SearchContainer>
                 <Dropdown filterop={filterop} setFilterop={setFilterop}/>
                 <Search placeholder="oi" options={Options}/>
+
               </S.SearchContainer>
+    
             </S.Header>
           </S.Section>
         </S.Container>

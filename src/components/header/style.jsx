@@ -5,12 +5,13 @@ export const HeaderContainer = styled.div`
   align-items: center;
   justify-content: start;
   width: 100%;
-  height: 90px;
+  height: 99px;
   background-color: #f4f7ff;
-  box-shadow: 200px 0px 10px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 200px 0px 5px 1px rgba(0, 0, 0, 0.2);
   user-select: none;
 `;
 export const Logo = styled.text`
-  margin-left: 27px;
-  font-size: 30px;
+  margin-left: 20px;
+  font-size: 25px;
+  font-weight: bold;
 `;
