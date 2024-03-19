@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style";
+import search  from "../../assets/images/search.svg"
 
 const Search = ({ options }) => {
   // conts que armazena o que esta sendo pesquisado
@@ -39,6 +40,7 @@ const Search = ({ options }) => {
     <S.Container>
 
       <S.SearchContainer>
+        <Search/>
         <S.SearchInput
           type="text"
           placeholder="Pesquise"

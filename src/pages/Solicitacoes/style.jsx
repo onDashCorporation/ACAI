@@ -49,11 +49,19 @@ export const Op = styled.button`
   }
 `;
 
+export const InsertConatiner = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+ 
+`;
+export const FilterContainer = styled.div`
+
+`;
 export const SearchContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 40px;
-  width: 300px;
-  height: 50px;
+  width: 205px;
 `;

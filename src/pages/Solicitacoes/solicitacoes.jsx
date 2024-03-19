@@ -22,11 +22,14 @@ const solicitacoes = () => {
                 <S.Op>Abertos</S.Op>
                 <S.Op>Historico</S.Op>
               </S.Option>
-              <S.SearchContainer>
+              <S.InsertConatiner>
+                <S.FilterContainer>
                 <Dropdown filterop={filterop} setFilterop={setFilterop}/>
-                <Search placeholder="oi" options={Options}/>
-
-              </S.SearchContainer>
+                </S.FilterContainer>
+                <S.SearchContainer>
+                  <Search placeholder="oi" options={Options}/>
+                </S.SearchContainer>
+              </S.InsertConatiner>
     
             </S.Header>
           </S.Section>
