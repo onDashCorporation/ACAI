@@ -40,6 +40,7 @@ const Search = ({ options }) => {
       <S.SearchContainer>
         <S.Search />
         <S.SearchInput
+          
           type="text"
           placeholder="Pesquise"
           value={inputSearch}
