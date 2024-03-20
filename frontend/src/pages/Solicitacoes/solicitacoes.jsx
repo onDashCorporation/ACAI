@@ -5,6 +5,7 @@ import Dropdown from "../../components/dropdown/dropdown"
 import { useState } from "react";
 import Search  from "../../components/search/search";
 import Options from "./db.json"
+import Table from "../../components/table/table";
 const solicitacoes = () => {
   const [filterop, setFilterop] = useState("Filtro");
 
@@ -33,6 +34,9 @@ const solicitacoes = () => {
     
             </S.Header>
           </S.Section>
+          <S.TableConteiner>
+          <Table/>
+          </S.TableConteiner>
         </S.Container>
       </S.Main>
     </S.Body>

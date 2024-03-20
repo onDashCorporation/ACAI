@@ -45,7 +45,7 @@ const Search = ({ options }) => {
           value={inputSearch}
           onChange={handleFilter}
           maxlength={40}
-        />
+        ></S.SearchInput>
       </S.SearchContainer>
 
       {filterSearch !== 0 && (
