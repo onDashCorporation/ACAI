@@ -38,7 +38,7 @@ const Search = ({ options }) => {
   return (
     <S.Container>
       <S.SearchContainer>
-        <S.Search />
+        {/* <S.Search /> */}
         <S.SearchInput
           
           type="text"

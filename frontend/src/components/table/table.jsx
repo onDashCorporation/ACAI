@@ -4,16 +4,22 @@ const Table = () => {
   return (
     <S.Main>
       <S.Header>
-        <S.HeaderItem>nome</S.HeaderItem>
-        <S.HeaderItem>id</S.HeaderItem>
-        <S.HeaderItem>deparatemnto</S.HeaderItem>
-        <S.HeaderItem>preço</S.HeaderItem>
+        <S.HeaderItem>
+          <S.HeaderInfo>id</S.HeaderInfo>
+          <S.HeaderInfo>Nome</S.HeaderInfo>
+          <S.HeaderInfo>Deparatemnto</S.HeaderInfo>
+          <S.HeaderInfo>Data</S.HeaderInfo>
+        </S.HeaderItem>
       </S.Header>
-      <S.Conatiner>
-        <S.ContainerItem>aa</S.ContainerItem>
-        <S.ContainerItem>aa</S.ContainerItem>
-        <S.ContainerItem>aa</S.ContainerItem>
-        <S.ContainerItem>aa</S.ContainerItem>
+      <S.Conatiner> 
+        <S.ContainerItem>
+          <S.ContainerInfo>
+            <S.Info>174</S.Info>
+            <S.Info>Arthur Ferreita Nascimento</S.Info>
+            <S.Info>contabilidade</S.Info>
+            <S.Info>12/04/2022</S.Info>
+          </S.ContainerInfo>
+        </S.ContainerItem>
       </S.Conatiner>
     </S.Main>
   );

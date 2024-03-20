@@ -24,7 +24,9 @@ export const Section = styled.div`
   gap: 20px;
 `;
 export const TableConteiner = styled.div`
-  width: 99%;
+display: flex;
+justify-content: center;
+  width: 90%;
   height: 900px;
 `;
 
