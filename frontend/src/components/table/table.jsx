@@ -1,40 +1,32 @@
-import * as S from "./style";
-
-const Table = ({ headers, data }) => {
-  const size = headers.length;
-  const columns = Array.from({ length: size }, () => "1fr").join(" ");
-
-  return (
-    <S.Table columns={columns}>
-      {data.map((element) =>
-        element.map((row) => <S.TableCell key={row}>{row}</S.TableCell>)
-      )}
-    </S.Table>
-  );
-};
-
-// const Table = ({ headers, data }) => {
-//   return (
-//     <S.TableWrapper>
-//     <S.Table>
-//       <thead>
-//         <S.TableRow>
-//           {headers.map((header, index) => (
-//             <S.TableHeader key={index}>{header}</S.TableHeader>
-//           ))}
-//         </S.TableRow>
-//       </thead>
-//       <tbody>
-//         {data.map((row, rowIndex) => (
-//           <S.TableRow key={rowIndex}>
-//             {row.map((cell, cellIndex) => (
-//               <S.TableCell key={cellIndex}>{cell}</S.TableCell>
-//             ))}
-//           </S.TableRow>
-//         ))}
-//       </tbody>
-//     </S.Table>
-//   </S.TableWrapper>
-//   );
-// };
-export default Table;
+ import PropTypes from 'prop-types';
+  import { Table,Button } from 'antd';
+  
+  const TableMain = ({ dataSource, columns, showDeleteOption }) => {
+    const columnsWithDeleteOption = [...columns]; // Clonar as colunas existentes
+  
+    // Adicionar uma coluna para a opção de exclusão, se necessário
+    if (showDeleteOption) {
+      columnsWithDeleteOption.push({
+        title: '',
+        key: 'action',
+        render: (text, record) => (
+          <Button type="link" onClick={() => handleDelete(record.key)}>Delete</Button>
+        ),
+      });
+    }
+  
+    const handleDelete = (key) => {
+      // Lógica para exclusão do item
+    };
+  
+    return <Table dataSource={dataSource} columns={columnsWithDeleteOption} />;
+  };
+  
+  TableMain.propTypes = {
+    dataSource: PropTypes.array.isRequired,
+    columns: PropTypes.array.isRequired,
+    showDeleteOption: PropTypes.bool, // Prop opcional para mostrar ou não a opção de exclusão
+  };
+  
+  export default TableMain;
+  
