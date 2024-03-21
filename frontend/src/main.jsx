@@ -54,6 +54,9 @@ const router = createBrowserRouter([
   },
 ]);
 
+
+
+
 // responsavel pela renderização, então passo a const acima para ele renderizar os caminhos
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
