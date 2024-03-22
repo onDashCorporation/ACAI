@@ -26,71 +26,37 @@ const solicitacoes = () => {
 
   const [filterop, setFilterop] = useState("Filtro");
   const [filteredInfo, setFilteredInfo] = useState({});
-  // const [dataSource, setDataSource] = useState([]);
+ 
 
-  // useEffect(() => {
-  //   fetchDataFromAPI();
-  // }, []);
+  
 
-  // const fetchDataFromAPI = async () => {
-  //   try {
-  //     // Simulando uma requisição para obter os dados da API
-  //     const response = await axios.get('url_da_sua_api');
-  //     const data = response.data; // Dados recebidos da API
-  //     setDataSource(data);
-  //   } catch (error) {
-  //     console.error('Erro ao obter dados da API:', error);
-  //   }
-  // };
-
-  const getUniqueOptions = (data, key) => {
-    const uniqueOptions = new Set();
-    data.forEach((item) => {
-      uniqueOptions.add(item[key]);
-    });
-    return Array.from(uniqueOptions).map((value) => ({ text: value, value }));
-  };
   const columns = [
     {
       title: "Name",
       dataIndex: "name", // Chave correspondente nos dados
       key: "name",
-      filteredValue: filteredInfo.name || null,
-      filters: getUniqueOptions(dataSource, "name"),
-      onFilter: (value, record) => record.name.includes(value),
-      // filters: [], // Inicializar opções de filtro vazias
-      // filteredValue: filteredInfo.name || null,
-      // filters: getUniqueOptions(dataSource, "name"),
-      // onFilter: (value, record) => record.name.includes(value),
 
-      // Outros atributos omitidos por brevidade...
+
     },
     {
       title: "Age",
       dataIndex: "age",
       key: "age",
-      filters: [], // Inicializar opções de filtro vazias
-      filteredValue: filteredInfo.age || null,
-      onFilter: (value, record) => record.age.includes(value),
     },
     {
       title: "Address",
       dataIndex: "address",
       key: "address",
-      filters: [], // Inicializar opções de filtro vazias
-      filteredValue: filteredInfo.address || null,
-      onFilter: (value, record) => record.address.includes(value),
+    
     },
     {
       title: "Hehe",
       dataIndex: "hehe",
       key: "hehe",
-      filters: [], // Inicializar opções de filtro vazias
-      filteredValue: filteredInfo.hehe || null,
-      onFilter: (value, record) => record.hehe.includes(value),
+     
     },
   ];
-  console.log(dataSource);
+  // console.log(dataSource);
 
   return (
     <S.Body>
@@ -121,8 +87,8 @@ const solicitacoes = () => {
               showDeleteOption={true}
               dataSource={dataSource}
               columns={columns}
-              filteredInfo={filteredInfo}
-              setFilteredInfo={setFilteredInfo}
+              
+        
             />
           </S.TableConteiner>
         </S.Container>
