@@ -23,6 +23,12 @@ export const Section = styled.div`
   width: 90%;
   gap: 20px;
 `;
+export const TableConteiner = styled.div`
+display: flex;
+justify-content: center;
+  width: 90%;
+  height: 900px;
+`;
 
 export const Title = styled.div`
   font-size: 35px;

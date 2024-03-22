@@ -38,14 +38,15 @@ const Search = ({ options }) => {
   return (
     <S.Container>
       <S.SearchContainer>
-        <S.Search />
+        {/* <S.Search /> */}
         <S.SearchInput
+          
           type="text"
           placeholder="Pesquise"
           value={inputSearch}
           onChange={handleFilter}
           maxlength={40}
-        />
+        ></S.SearchInput>
       </S.SearchContainer>
 
       {filterSearch !== 0 && (

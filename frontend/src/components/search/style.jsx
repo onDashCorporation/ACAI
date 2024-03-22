@@ -54,7 +54,7 @@ export const ContainerOp = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 2px;
-  background-color: #579cda;
+  background-color: #b7b8b9;
   font-weight: 500;
   color: #333;
 `;
