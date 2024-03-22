@@ -8,10 +8,10 @@ import Login from "./pages/Login/login.jsx";
 import Forgot from "./pages/Login/forgot.jsx";
 import Register from "./pages/Login/register.jsx";
 import Dashboard from "./pages/Dashboard/dashboard.jsx";
-import Solicitacoes from "./pages/Solicitacoes/solicitacoes.jsx"
-import Controle from "./pages/Controle/controle.jsx"
+import Solicitacoes from "./pages/Solicitacoes/solicitacoes.jsx";
+import Controle from "./pages/Controle/controle.jsx";
 import Relatorios from "./pages/Relatorios/relatorios.jsx";
-import Catalogacao from "./pages/Catalogacao/catalogacao.jsx"
+import Catalogacao from "./pages/Catalogacao/catalogacao.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/solicitacoes",
-        element: <Solicitacoes/>,
+        element: <Solicitacoes />,
       },
       {
         path: "/controle",
@@ -53,9 +53,6 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
-
-
 
 // responsavel pela renderização, então passo a const acima para ele renderizar os caminhos
 ReactDOM.createRoot(document.getElementById("root")).render(

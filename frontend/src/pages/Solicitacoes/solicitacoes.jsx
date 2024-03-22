@@ -2,77 +2,100 @@ import * as S from "./style";
 import Nav from "../../components/nav/nav";
 import Header from "../../components/header/header";
 import Dropdown from "../../components/dropdown/dropdown";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Search from "../../components/search/search";
 import Options from "./db.json";
 import TableMain from "../../components/table/table";
 const solicitacoes = () => {
-  const [filterop, setFilterop] = useState("Filtro");
-  // const headers = ["ID", "Produto"];
-  // const data = [
-  //   { id: 1, produto: "PC" },
-  //   { id: 2, produto: "Notebook" },
-  //   { id: 3, produto: "Celular" },
-  //   { id: 4, produto: "Papel" },
-  //   { id: 5, produto: "Lápis" },
-  //   { id: 6, produto: "Teclado" },
-  //   { id: 7, produto: "Celular" },
-  //   { id: 8, produto: "Cabo" },
-  //   { id: 9, produto: "PC" },
-  //   { id: 10, produto: "Notebook" },
-  //   { id: 11, produto: "Celular" },
-  //   { id: 12, produto: "Papel" },
-  //   { id: 13, produto: "Lápis" },
-  //   { id: 14, produto: "Teclado" },
-  //   { id: 15, produto: "Celular" },
-  //   { id: 16, produto: "Cabo" },
-  //   { id: 17, produto: "PC" },
-  //   { id: 18, produto: "Notebook" },
-  //   { id: 19, produto: "Celular" },
-  //   { id: 20, produto: "Papel" },
-  // ];
   const dataSource = [
     {
-      key: '1',
-      name: 'Mike',
+      key: "1",
+      name: "Mike",
       age: 32,
-      address: '10 Downing Street',
-      
+      address: "10 Downing Street",
+      hehe: "oi",
     },
     {
-      key: '2',
-      name: 'John',
+      key: "2",
+      name: "John",
       age: 42,
-      address: '10 Downing Street',
+      address: "10 Downing Street",
+      hehe: "hehe",
     },
   ];
-  
+
+  const [filterop, setFilterop] = useState("Filtro");
+  const [filteredInfo, setFilteredInfo] = useState({});
+  // const [dataSource, setDataSource] = useState([]);
+
+  // useEffect(() => {
+  //   fetchDataFromAPI();
+  // }, []);
+
+  // const fetchDataFromAPI = async () => {
+  //   try {
+  //     // Simulando uma requisição para obter os dados da API
+  //     const response = await axios.get('url_da_sua_api');
+  //     const data = response.data; // Dados recebidos da API
+  //     setDataSource(data);
+  //   } catch (error) {
+  //     console.error('Erro ao obter dados da API:', error);
+  //   }
+  // };
+
+  const getUniqueOptions = (data, key) => {
+    const uniqueOptions = new Set();
+    data.forEach((item) => {
+      uniqueOptions.add(item[key]);
+    });
+    return Array.from(uniqueOptions).map((value) => ({ text: value, value }));
+  };
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: "Name",
+      dataIndex: "name", // Chave correspondente nos dados
+      key: "name",
+      filteredValue: filteredInfo.name || null,
+      filters: getUniqueOptions(dataSource, "name"),
+      onFilter: (value, record) => record.name.includes(value),
+      // filters: [], // Inicializar opções de filtro vazias
+      // filteredValue: filteredInfo.name || null,
+      // filters: getUniqueOptions(dataSource, "name"),
+      // onFilter: (value, record) => record.name.includes(value),
+
+      // Outros atributos omitidos por brevidade...
     },
     {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
+      title: "Age",
+      dataIndex: "age",
+      key: "age",
+      filters: [], // Inicializar opções de filtro vazias
+      filteredValue: filteredInfo.age || null,
+      onFilter: (value, record) => record.age.includes(value),
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address',
+      title: "Address",
+      dataIndex: "address",
+      key: "address",
+      filters: [], // Inicializar opções de filtro vazias
+      filteredValue: filteredInfo.address || null,
+      onFilter: (value, record) => record.address.includes(value),
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address',
+      title: "Hehe",
+      dataIndex: "hehe",
+      key: "hehe",
+      filters: [], // Inicializar opções de filtro vazias
+      filteredValue: filteredInfo.hehe || null,
+      onFilter: (value, record) => record.hehe.includes(value),
     },
   ];
+  console.log(dataSource);
 
   return (
     <S.Body>
       <Header />
+
       <S.Main>
         <Nav />
         <S.Container>
@@ -94,10 +117,13 @@ const solicitacoes = () => {
             </S.Header>
           </S.Section>
           <S.TableConteiner>
-          <TableMain
-
-            dataSource={dataSource} columns={columns} showDeleteOption={true}
-          />
+            <TableMain
+              showDeleteOption={true}
+              dataSource={dataSource}
+              columns={columns}
+              filteredInfo={filteredInfo}
+              setFilteredInfo={setFilteredInfo}
+            />
           </S.TableConteiner>
         </S.Container>
       </S.Main>
