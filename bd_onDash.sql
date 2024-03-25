@@ -1,10 +1,10 @@
 CREATE DATABASE onDash;
-DROP DATABASE teste;
+DROP DATABASE onDash;
 USE onDash;
 
 -- CRIAÇÃO DAS TABELAS FORTES/INDEPENDENTES --
 
-drop table usuarios;
+-- drop table usuarios;
 create table usuarios(
 	id int primary key not null,
     cargo enum('auxiliar', 'gestor', 'solicitante') not null,
@@ -27,7 +27,7 @@ create table categoria(
 
 
 -- TABELAS DEPENDENTES DA TABELA USUARIOS
-drop table auxiliar, gestor, solicitante;
+-- drop table auxiliar, gestor, solicitante;
 create table auxiliar(
 	id int primary key not null,
     usuId int not null,
@@ -69,7 +69,7 @@ create table produto(
     FOREIGN KEY(fk_itemId) references item(id) -- tabela produto depende da tabela de item que tem ligação com a categoria.
 );
 
--- TABELA DEPENDENTE DA TABELA tipomovi, categoria e produto
+-- TABELA DEPENDENTE DA TABELA tipomovi, categoria, produto e item
 
 create table estoque(
 	id int primary key not null,
@@ -112,4 +112,6 @@ create table controle(
     fk_solicitacaoId int not null,
     
     foreign key (fk_solicitacaoId) references solicitacaoProd(id)
-);
+); 
+
+show tables from onDash;
