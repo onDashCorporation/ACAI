@@ -5,12 +5,20 @@ USE onDash;
 -- CRIAÇÃO DAS TABELAS FORTES/INDEPENDENTES --
 
 -- drop table usuarios;
+
+CREATE TABLE cargos (
+    cargoId INT PRIMARY KEY AUTO_INCREMENT not null,
+    cargo_nome ENUM('auxiliar', 'gestor', 'solicitante') NOT NULL
+);
+
 create table usuarios(
-	id int primary key not null,
-    cargo enum('auxiliar', 'gestor', 'solicitante') not null,
+	usuId int primary key not null auto_increment,
     nome varchar(100) not null,
     email varchar(200) not null,
-    senha varchar(20) not null
+    senha varchar(20) not null,
+	fk_cargoId int not null,
+    
+    foreign key (fk_cargoId) references cargos(cargoId)
 );
 
 create table tipomovi(
@@ -29,24 +37,27 @@ create table categoria(
 -- TABELAS DEPENDENTES DA TABELA USUARIOS
 -- drop table auxiliar, gestor, solicitante;
 create table auxiliar(
-	id int primary key not null,
-    usuId int not null,
+    fk_usuId int not null,
+    fk_cargoId int not null,
     
-    foreign key (usuId) references usuarios(id)
+    foreign key (fk_cargoId) references cargos(cargoId),
+    foreign key (fk_usuId) references usuarios(usuId)
 );
 
 create table gestor(
-	id int primary key not null,
-    usuId int not null,
+    fk_usuId int not null,
+    fk_cargoId int,
     
-    foreign key (usuId) references usuarios(id)
+    foreign key (fk_usuId) references usuarios(usuId),
+    foreign key (fk_cargoId) references cargos(cargoId)
 );
 
 create table solicitante(
-	id int primary key not null,
     usuId int not null,
+    fk_solicitanteId int,
     
-    foreign key (usuId) references usuarios(id)
+    foreign key (usuId) references usuarios(id),
+    foreign key (fk_solicitanteId) references cargos(solicitanteId)
 );
 
 -- TABELAS DEPENDETES DA TABELA CATEGORIA --

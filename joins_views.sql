@@ -3,13 +3,21 @@ use onDash;
 -- FAZENDO OS JOINS E VIEWS DAS TABELAS --
 
 --  joins das tabelas de usuarios do nosso sistema
+
 SELECT * 
-FROM usuarios
-INNER JOIN auxiliar ON usuarios.id = auxiliar.usuId;
+FROM cargos
+INNER JOIN usuarios on cargos.cargoId = usuarios.usuId;
+
+
+SELECT * 
+FROM usuarios AS u
+INNER JOIN auxiliar AS a ON u.usuId = a.fk_usuId
+INNER JOIN cargos AS c ON c.cargoId = a.fk_cargoId;
 
 SELECT *
-FROM usuarios
-INNER JOIN gestor on usuarios.id = gestor.usuId;
+FROM usuarios as u
+INNER JOIN gestor as g on u.usuId = g.fk_usuId
+INNER JOIN cargos as c on c.cargoId = g.fk_cargoId;
 
 SELECT *
 FROM usuarios
