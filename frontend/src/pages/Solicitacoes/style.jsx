@@ -23,12 +23,6 @@ export const Section = styled.div`
   width: 90%;
   gap: 20px;
 `;
-export const TableConteiner = styled.div`
-display: flex;
-justify-content: center;
-  width: 90%;
-  height: 900px;
-`;
 
 export const Title = styled.div`
   font-size: 35px;
@@ -55,7 +49,7 @@ export const Op = styled.button`
   }
 `;
 
-export const InsertConatiner = styled.div`
+export const InsertContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 40px;
@@ -67,4 +61,44 @@ export const SearchContainer = styled.div`
   align-items: center;
   gap: 40px;
   width: 250px;
+`;
+
+export const TableContainer = styled.div`
+  width: 90%;
+  height: 900px;
+`;
+
+export const StyledTable = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`;
+
+// Componente de cabeçalho da tabela
+export const TableHeader = styled.thead`
+  th {
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+  }
+`;
+
+// Componente de corpo da tabela
+export const TableBody = styled.tbody`
+  tr {
+    &:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+
+  td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
 `;

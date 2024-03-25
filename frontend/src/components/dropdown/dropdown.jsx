@@ -16,10 +16,7 @@ return(
             <S.ContainerOp>
                 {options.map(options => (
             <S.Op onClick={e => {setFilterop(options), setIsActive(false)}}>{options}</S.Op>
-
-
-                ))}
-            
+                ))}          
         </S.ContainerOp>
         )}                     
     </S.Container>

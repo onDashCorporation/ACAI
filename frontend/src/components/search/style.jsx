@@ -37,8 +37,8 @@ export const ContainerResults = styled.div`
   user-select: none;
   display: flex;
   flex-direction: column;
-  position: relative;
-  overflow: hidden;
+  /* position: relative; */
+  /* overflow: hidden;   */
   overflow-y: auto;
   height: 100px;
   width: 100%;

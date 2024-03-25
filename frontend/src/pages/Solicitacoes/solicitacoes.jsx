@@ -5,7 +5,6 @@ import Dropdown from "../../components/dropdown/dropdown";
 import { useState, useEffect } from "react";
 import Search from "../../components/search/search";
 import Options from "./db.json";
-import TableMain from "../../components/table/table";
 const solicitacoes = () => {
   const dataSource = [
     {
@@ -56,12 +55,10 @@ const solicitacoes = () => {
      
     },
   ];
-  // console.log(dataSource);
 
   return (
     <S.Body>
       <Header />
-
       <S.Main>
         <Nav />
         <S.Container>
@@ -72,25 +69,131 @@ const solicitacoes = () => {
                 <S.Op>Abertos</S.Op>
                 <S.Op>Historico</S.Op>
               </S.Option>
-              <S.InsertConatiner>
+              <S.InsertContainer>
                 <S.FilterContainer>
                   <Dropdown filterop={filterop} setFilterop={setFilterop} />
                 </S.FilterContainer>
                 <S.SearchContainer>
                   <Search placeholder="oi" options={Options} />
                 </S.SearchContainer>
-              </S.InsertConatiner>
+              </S.InsertContainer>
             </S.Header>
           </S.Section>
-          <S.TableConteiner>
-            <TableMain
-              showDeleteOption={true}
-              dataSource={dataSource}
-              columns={columns}
-              
-        
-            />
-          </S.TableConteiner>
+          <S.TableContainer>
+            <S.StyledTable>
+              <S.TableHeader>
+                <tr>
+                <th>Status</th>
+                <th>id</th>
+                <th>Nome</th>
+                <th>Departamento</th>
+                <th>Data</th>
+                </tr>
+              </S.TableHeader>
+              <S.TableBody>
+                <tr>
+                  <td>confirmado</td>
+                  <td>83272</td>
+                  <td>Arthur Seinai   </td>
+                  <td>Logistica</td>
+                  <td>22/03/2024</td>
+                </tr>
+                <tr>
+                  <td>confirmado</td>
+                  <td>83272</td>
+                  <td>Arthur Seinai   </td>
+                  <td>Logistica</td>
+                  <td>22/03/2024</td>
+                </tr>
+                <tr>
+                  <td>confirmado</td>
+                  <td>83272</td>
+                  <td>Arthur Seinai   </td>
+                  <td>Logistica</td>
+                  <td>22/03/2024</td>
+                </tr>
+                <tr>
+                  <td>confirmado</td>
+                  <td>83272</td>
+                  <td>Arthur Seinai   </td>
+                  <td>Logistica</td>
+                  <td>22/03/2024</td>
+                </tr>
+                  <tr>
+                    <td>confirmado</td>
+                    <td>83272</td>
+                    <td>Arthur Seinai   </td>
+                    <td>Logistica</td>
+                    <td>22/03/2024</td>
+                  </tr>
+                  <tr>
+                    <td>confirmado</td>
+                    <td>83272</td>
+                    <td>Arthur Seinai   </td>
+                    <td>Logistica</td>
+                    <td>22/03/2024</td>
+                  </tr>
+                  <tr>
+                    <td>confirmado</td>
+                    <td>83272</td>
+                    <td>Arthur Seinai   </td>
+                    <td>Logistica</td>
+                    <td>22/03/2024</td>
+                  </tr>
+                  <tr>
+                    <td>confirmado</td>
+                    <td>83272</td>
+                    <td>Arthur Seinai   </td>
+                    <td>Logistica</td>
+                    <td>22/03/2024</td>
+                  </tr>
+                  <tr>
+                    <td>confirmado</td>
+                    <td>83272</td>
+                    <td>Arthur Seinai   </td>
+                    <td>Logistica</td>
+                    <td>22/03/2024</td>
+                  </tr>
+                  <tr>
+                    <td>confirmado</td>
+                    <td>83272</td>
+                    <td>Arthur Seinai   </td>
+                    <td>Logistica</td>
+                    <td>22/03/2024</td>
+                  </tr>
+                  <tr>
+                    <td>confirmado</td>
+                    <td>83272</td>
+                    <td>Arthur Seinai   </td>
+                    <td>Logistica</td>
+                    <td>22/03/2024</td>
+                  </tr>
+                  <tr>
+                    <td>confirmado</td>
+                    <td>83272</td>
+                    <td>Arthur Seinai   </td>
+                    <td>Logistica</td>
+                    <td>22/03/2024</td>
+                  </tr>
+                  <tr>
+                    <td>confirmado</td>
+                    <td>83272</td>
+                    <td>Arthur Seinai   </td>
+                    <td>Logistica</td>
+                    <td>22/03/2024</td>
+                  </tr>
+                  <tr>
+                    <td>confirmado</td>
+                    <td>83272</td>
+                    <td>Arthur Seinai   </td>
+                    <td>Logistica</td>
+                    <td>22/03/2024</td>
+                  </tr>
+                  
+              </S.TableBody>
+            </S.StyledTable>
+            
+          </S.TableContainer>
         </S.Container>
       </S.Main>
     </S.Body>
