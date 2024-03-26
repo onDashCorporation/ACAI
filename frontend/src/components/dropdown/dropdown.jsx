@@ -4,7 +4,7 @@ import * as S from "./style"
 const Dropdown = ({filterop, setFilterop}) => {
 
     const [isActive, setIsActive] = useState(false);
-    const options = ["Categoria","Tipo", "Departamento" ]
+    const options = ["Categoria","Tipo", "Departamento", "address" ]
 
 
 
@@ -16,10 +16,7 @@ return(
             <S.ContainerOp>
                 {options.map(options => (
             <S.Op onClick={e => {setFilterop(options), setIsActive(false)}}>{options}</S.Op>
-
-
-                ))}
-            
+                ))}          
         </S.ContainerOp>
         )}                     
     </S.Container>

@@ -15,6 +15,7 @@ export const Container = styled.div`
   overflow-y: auto;
   width: 100%;
   height: 90vh;
+  gap: 50px;
 `;
 export const Section = styled.div`
   margin-top: 40px;
@@ -22,12 +23,6 @@ export const Section = styled.div`
   flex-direction: column;
   width: 90%;
   gap: 20px;
-`;
-export const TableConteiner = styled.div`
-display: flex;
-justify-content: center;
-  width: 90%;
-  height: 900px;
 `;
 
 export const Title = styled.div`
@@ -55,7 +50,7 @@ export const Op = styled.button`
   }
 `;
 
-export const InsertConatiner = styled.div`
+export const InsertContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 40px;
@@ -68,3 +63,54 @@ export const SearchContainer = styled.div`
   gap: 40px;
   width: 250px;
 `;
+
+export const TableContainer = styled.div`
+  width: 90%;
+  height: 900px;
+`;
+
+export const StyledTable = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`;
+
+// Componente de cabeçalho da tabela
+export const TableHeader = styled.thead`
+    background-color: #f2f2f2;
+
+ 
+`;
+export const ThHeader = styled.th`
+
+  padding: 17px;
+  font-weight: bold;
+  text-align: left;
+  border-top-left-radius: ${({ isFirst }) => isFirst ? '5px' : '0px'};
+  border-top-right-radius: ${({ isLast }) => isLast ? '5px' : '0'};
+
+`;
+
+export const TrHeader = styled.tr`
+
+
+`;
+
+// Componente de corpo da tabela
+export const TableBody = styled.tbody`
+
+`;
+export const TrBody = styled.tr`
+
+    &:hover {
+      background-color: #f2f2f2;
+    }
+  `;
+export const TdBody = styled.td`
+
+    border-bottom: 1px solid #ddd;
+    padding: 20px;
+    text-align: left;
+  `;
+  export const ImageCell = styled.img`
+  width: 25px;
+  `;
