@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style";
 
-const Search = ({ options }) => {
+const Search = ({ options, placeholder, onChange }) => {
   // conts que armazena o que esta sendo pesquisado
   const [inputSearch, setInputSearch] = useState("");
   // const que armazena o a pesquisa já filtrada
@@ -42,9 +42,9 @@ const Search = ({ options }) => {
         <S.SearchInput
           
           type="text"
-          placeholder="Pesquise"
+          placeholder={placeholder || "Pesquise"}
           value={inputSearch}
-          onChange={handleFilter}
+          onChange={onChange && handleFilter}
           maxlength={40}
         ></S.SearchInput>
       </S.SearchContainer>

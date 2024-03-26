@@ -5,57 +5,24 @@ import Dropdown from "../../components/dropdown/dropdown";
 import { useState, useEffect } from "react";
 import Search from "../../components/search/search";
 import Options from "./db.json";
+import row from "./tabledb.json";
 const solicitacoes = () => {
-  const dataSource = [
-    {
-      key: "1",
-      name: "Mike",
-      age: 32,
-      address: "10 Downing Street",
-      hehe: "oi",
-    },
-    {
-      key: "2",
-      name: "John",
-      age: 42,
-      address: "10 Downing Street",
-      hehe: "hehe",
-    },
-  ];
-
-  const [filterop, setFilterop] = useState("Filtro");
-  const [filteredInfo, setFilteredInfo] = useState({});
- 
-
   
+  const [filterop, setFilterop] = useState("Filtro");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredRow, setFilteredRow] = useState(row); // Estado para armazenar as linhas filtradas
+  console.log(setSearchTerm)
+  // Função para filtrar as linhas com base no termo de pesquisa
+  useEffect(() => {
+    const filteredData = row.filter((value) =>
+      Object.values(value).some((field) =>
+        field.toString().toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+    setFilteredRow(filteredData);
+  }, [searchTerm]);
 
-  const columns = [
-    {
-      title: "Name",
-      dataIndex: "name", // Chave correspondente nos dados
-      key: "name",
-
-
-    },
-    {
-      title: "Age",
-      dataIndex: "age",
-      key: "age",
-    },
-    {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
-    
-    },
-    {
-      title: "Hehe",
-      dataIndex: "hehe",
-      key: "hehe",
-     
-    },
-  ];
-
+ 
   return (
     <S.Body>
       <Header />
@@ -74,7 +41,8 @@ const solicitacoes = () => {
                   <Dropdown filterop={filterop} setFilterop={setFilterop} />
                 </S.FilterContainer>
                 <S.SearchContainer>
-                  <Search placeholder="oi" options={Options} />
+                  <Search placeholder="Pesquisar" options={Options} 
+                  onChange={(e) => setSearchTerm(e.target.value)}/>
                 </S.SearchContainer>
               </S.InsertContainer>
             </S.Header>
@@ -87,111 +55,23 @@ const solicitacoes = () => {
                 <th>id</th>
                 <th>Nome</th>
                 <th>Departamento</th>
-                <th>Data</th>
+              
                 </tr>
               </S.TableHeader>
               <S.TableBody>
-                <tr>
-                  <td>confirmado</td>
-                  <td>83272</td>
-                  <td>Arthur Seinai   </td>
-                  <td>Logistica</td>
-                  <td>22/03/2024</td>
-                </tr>
-                <tr>
-                  <td>confirmado</td>
-                  <td>83272</td>
-                  <td>Arthur Seinai   </td>
-                  <td>Logistica</td>
-                  <td>22/03/2024</td>
-                </tr>
-                <tr>
-                  <td>confirmado</td>
-                  <td>83272</td>
-                  <td>Arthur Seinai   </td>
-                  <td>Logistica</td>
-                  <td>22/03/2024</td>
-                </tr>
-                <tr>
-                  <td>confirmado</td>
-                  <td>83272</td>
-                  <td>Arthur Seinai   </td>
-                  <td>Logistica</td>
-                  <td>22/03/2024</td>
-                </tr>
-                  <tr>
-                    <td>confirmado</td>
-                    <td>83272</td>
-                    <td>Arthur Seinai   </td>
-                    <td>Logistica</td>
-                    <td>22/03/2024</td>
-                  </tr>
-                  <tr>
-                    <td>confirmado</td>
-                    <td>83272</td>
-                    <td>Arthur Seinai   </td>
-                    <td>Logistica</td>
-                    <td>22/03/2024</td>
-                  </tr>
-                  <tr>
-                    <td>confirmado</td>
-                    <td>83272</td>
-                    <td>Arthur Seinai   </td>
-                    <td>Logistica</td>
-                    <td>22/03/2024</td>
-                  </tr>
-                  <tr>
-                    <td>confirmado</td>
-                    <td>83272</td>
-                    <td>Arthur Seinai   </td>
-                    <td>Logistica</td>
-                    <td>22/03/2024</td>
-                  </tr>
-                  <tr>
-                    <td>confirmado</td>
-                    <td>83272</td>
-                    <td>Arthur Seinai   </td>
-                    <td>Logistica</td>
-                    <td>22/03/2024</td>
-                  </tr>
-                  <tr>
-                    <td>confirmado</td>
-                    <td>83272</td>
-                    <td>Arthur Seinai   </td>
-                    <td>Logistica</td>
-                    <td>22/03/2024</td>
-                  </tr>
-                  <tr>
-                    <td>confirmado</td>
-                    <td>83272</td>
-                    <td>Arthur Seinai   </td>
-                    <td>Logistica</td>
-                    <td>22/03/2024</td>
-                  </tr>
-                  <tr>
-                    <td>confirmado</td>
-                    <td>83272</td>
-                    <td>Arthur Seinai   </td>
-                    <td>Logistica</td>
-                    <td>22/03/2024</td>
-                  </tr>
-                  <tr>
-                    <td>confirmado</td>
-                    <td>83272</td>
-                    <td>Arthur Seinai   </td>
-                    <td>Logistica</td>
-                    <td>22/03/2024</td>
-                  </tr>
-                  <tr>
-                    <td>confirmado</td>
-                    <td>83272</td>
-                    <td>Arthur Seinai   </td>
-                    <td>Logistica</td>
-                    <td>22/03/2024</td>
-                  </tr>
-                  
+
+              {filteredRow.map((value) => (
+                <tr key={value.key}>
+                <td>{value.address}</td>
+                <td>{value.name} </td>
+                <td>{value.age}</td>
+                <td>{value.hehe}</td>
+              </tr>
+
+              ))}
               </S.TableBody>
             </S.StyledTable>
+          
             
           </S.TableContainer>
         </S.Container>
