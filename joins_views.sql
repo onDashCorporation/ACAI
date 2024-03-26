@@ -2,39 +2,76 @@ use onDash;
 
 -- FAZENDO OS JOINS E VIEWS DAS TABELAS --
 
---  joins das tabelas de usuarios do nosso sistema
 
-SELECT * 
-FROM cargos
-INNER JOIN usuarios on cargos.cargoId = usuarios.usuId;
-
-
-SELECT * 
-FROM usuarios AS u
-INNER JOIN auxiliar AS a ON u.usuId = a.fk_usuId
-INNER JOIN cargos AS c ON c.cargoId = a.fk_cargoId;
-
-SELECT *
-FROM usuarios as u
-INNER JOIN gestor as g on u.usuId = g.fk_usuId
-INNER JOIN cargos as c on c.cargoId = g.fk_cargoId;
-
-SELECT *
-FROM usuarios
-INNER JOIN solicitante on usuarios.id = solicitante.usuId;
+-- 	TODOS OS JOINS RELACIONADOS AOS USUARIOS
+-- 	VER TODOS OS USUARIOS JUNTOS
+SELECT 
+    u.usuId,
+    u.nome AS nome_usuario,
+    u.email,
+    u.senha,
+    c.cargoId,
+    c.cargo_nome
+FROM 
+    usuarios u
+INNER JOIN 
+    cargos c ON u.fk_cargoId = c.cargoId;
 
 
+--  VER OS USUARIOS QUE SAO AUXILIARES
+SELECT 
+    u.usuId, u.nome, u.email, u.senha, c.cargoId, c.cargo_nome
+FROM 
+    usuarios AS u
+INNER JOIN 
+    auxiliar AS a ON u.usuId = a.fk_usuId
+INNER JOIN 
+    cargos AS c ON c.cargoId = a.fk_cargoId;
 
--- joins das tabelas dependentes da tabela categoria
-SELECT *
-FROM categoria
-INNER JOIN item ON categoria.id = item.fk_categoriaId; -- categoria e item
+    
+--  VER OS USUARIOS QUE SAO OS GESTORES
+SELECT 
+	u.usuId, u.nome, u.email, u.senha, c.cargoId, c.cargo_nome
+FROM 
+	usuarios as u
+INNER JOIN 
+	gestor as g on u.usuId = g.fk_usuId
+INNER JOIN 
+	cargos as c on c.cargoId = g.fk_cargoId;
+    
+    
+-- 	 VER OS USUARIOS QUE SAO SOLICITANTES
+SELECT 
+	 u.usuId, u.nome, u.email, u.senha, c.cargoId, c.cargo_nome
+FROM 
+    usuarios AS u
+INNER JOIN 
+    solicitante AS s ON u.usuId = s.fk_usuId
+INNER JOIN 
+	cargos as c on c.cargoId = s.fk_cargoId;
 
-SELECT *
-FROM item
-INNER JOIN produto ON item.id = produto.fk_itemId; -- item e produto
 
+-- JOINS RELACIONADOS A CATEGORIAS
 
+-- VER TODOS OS ITENS COM SUAS CATEGORIAS
+SELECT 
+	i.id, i.foto, i.nome, i.qtde, i.valor, i.qtdMin, c.id, c.nome
+FROM 
+	item as i
+INNER JOIN
+	categoria as c on i.id = c.id;
+
+SELECT 
+	i.id, i.foto, i.nome, i.qtde, i.valor, i.qtdMin, c.id, c.nome, p.id
+FROM 
+	item as i
+INNER JOIN
+	categoria as c on i.id = c.id
+INNER JOIN
+	produto as p on i.id = p.id;
+
+    
+    
 -- view e join da tabela estoque, dependente da tabela de tipomovi, categoria, produto e item
 CREATE VIEW vw_produtos AS
 SELECT

@@ -4,12 +4,25 @@ USE onDash;
 
 -- CRIAÇÃO DAS TABELAS FORTES/INDEPENDENTES --
 
--- drop table usuarios;
-
 CREATE TABLE cargos (
     cargoId INT PRIMARY KEY AUTO_INCREMENT not null,
     cargo_nome ENUM('auxiliar', 'gestor', 'solicitante') NOT NULL
 );
+
+create table tipomovi(
+	id int primary key not null,
+    tipo enum('entrada', 'saida') not null
+);
+
+drop table categoria;
+create table categoria(
+	id int primary key not null auto_increment,
+    nome varchar(100) not null
+);
+
+-- CRIAÇÃO DAS TABELAS FRACAS/DEPENDENTES --
+
+-- TABELAS USUARIOS E SEUS DEPENDENTES
 
 create table usuarios(
 	usuId int primary key not null auto_increment,
@@ -21,23 +34,8 @@ create table usuarios(
     foreign key (fk_cargoId) references cargos(cargoId)
 );
 
-create table tipomovi(
-	id int primary key not null,
-    tipo enum('entrada', 'saida') not null
-);
-
-create table categoria(
-	id int primary key not null,
-    nome varchar(100) not null
-);
-
--- CRIAÇÃO DAS TABELAS FRACAS/DEPENDENTES --
-
-
--- TABELAS DEPENDENTES DA TABELA USUARIOS
--- drop table auxiliar, gestor, solicitante;
 create table auxiliar(
-    fk_usuId int not null,
+    fk_usuId int not null unique,
     fk_cargoId int not null,
     
     foreign key (fk_cargoId) references cargos(cargoId),
@@ -45,7 +43,7 @@ create table auxiliar(
 );
 
 create table gestor(
-    fk_usuId int not null,
+    fk_usuId int not null unique,
     fk_cargoId int,
     
     foreign key (fk_usuId) references usuarios(usuId),
@@ -53,11 +51,11 @@ create table gestor(
 );
 
 create table solicitante(
-    usuId int not null,
-    fk_solicitanteId int,
+    fk_usuId int not null unique,
+    fk_cargoId int,
     
-    foreign key (usuId) references usuarios(id),
-    foreign key (fk_solicitanteId) references cargos(solicitanteId)
+    foreign key (fk_usuId) references usuarios(usuId),
+    foreign key (fk_cargoId) references cargos(cargoId)
 );
 
 -- TABELAS DEPENDETES DA TABELA CATEGORIA --
@@ -75,7 +73,7 @@ create table item(
 
 create table produto(
 	id int primary key not null,
-    fk_itemId int not null,
+    fk_itemId int not null unique,
     
     FOREIGN KEY(fk_itemId) references item(id) -- tabela produto depende da tabela de item que tem ligação com a categoria.
 );

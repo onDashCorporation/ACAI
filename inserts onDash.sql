@@ -1,30 +1,43 @@
 use onDash;
 
--- INSERTS NAS TABELAS, APENAS PARA TESTE -- 
+-- inserts das tabelas -- 
 
-insert into usuarios (usuId, nome, email, senha, fk_cargoId) values (1, 'Alanah Raiston', 'araiston0@livejournal.com', 'uR7(TBZ''', 1);
-SELECT * FROM usuarios;
-insert into usuarios (usuId, nome, email, senha, fk_cargoId) values (2, 'Dominik Swiffen', 'dswiffen1@blogger.com', 'eG5@\|>K@j', 2);
-insert into usuarios (usuId, nome, email, senha, fk_cargoId) values (3, 'Hobard Blaxeland', 'hblaxeland2@howstuffworks.com', 'vD9$XpO+fT', 2);
-insert into usuarios (id, cargo, nome, email, senha) values (4, 1, 'Marie-ann Screase', 'mscrease3@bloglines.com', 'iB4$nFS>{S=');
-insert into usuarios (id, cargo, nome, email, senha) values (5, 3, 'Tannie Wallett', 'twallett4@lulu.com', 'eO0%qKU1c');
-insert into usuarios (id, cargo, nome, email, senha) values (6, 3, 'Sarina Landor', 'slandor5@multiply.com', 'bF7/w}i4O5?wv)>');
 
+-- todos os inserts ligados com os usuarios dos nossos sistemas
+SELECT * FROM cargos;
 insert into cargos(cargoId, cargo_nome) VALUES
 (1, 'auxiliar'),
 (2, 'gestor'),
 (3, 'solicitante');
-SELECT * FROM cargos;
 
--- 1, auxiliar
--- 2, gestor
--- 3, solicitante
+
+insert into usuarios (usuId, nome, email, senha, fk_cargoId) values (1, 'Alanah Raiston', 'araiston0@livejournal.com', 'uR7(TBZ''', 1);
+insert into usuarios (usuId, nome, email, senha, fk_cargoId) values (2, 'Judah', 'jgatherell0@cbslocal.com', 'Gatherell', 1);
+
+insert into usuarios (usuId, nome, email, senha, fk_cargoId) values (3, 'Ario', 'acardnell0@acquirethisname.com', 'gK9`}5\Zb{yk', 2);
+insert into usuarios (usuId, nome, email, senha, fk_cargoId) values (4, 'Merwin', 'mpencot1@home.pl', 'fN9/F(n~fM', 2);
+
+insert into usuarios (usuId, nome, email, senha, fk_cargoId) values (5, 'Phyllys', 'pjillins2@vinaora.com', 'kV8#*7B/,6`i36', 3);
+insert into usuarios (usuId, nome, email, senha, fk_cargoId) values (6, 'Erica', 'egarman3@spotify.com', 'lE2@mngIB', 3);
+
+
 
 insert into auxiliar (fk_usuId, fk_cargoId) values (1, 1);
 insert into auxiliar (fk_usuId, fk_cargoId) values (2, 1);
 
-insert into gestor (fk_usuId, fk_cargoId) values (3, 2);
-insert into gestor (fk_usuId, fk_cargoId) values (3, 3);
 
-insert into solicitante (id, usuId) values(1, 5);
-insert into solicitante (id, usuId) values(2, 6);
+insert into gestor (fk_usuId, fk_cargoId) values (3, 2);
+insert into gestor (fk_usuId, fk_cargoId) values (4, 2);
+
+insert into solicitante (fk_usuId, fk_cargoId) values(5, 3);
+insert into solicitante (fk_usuId, fk_cargoId) values(6, 3);
+
+
+-- todos os inserts ligados com a tabela de categoria
+insert into categoria(id, nome) values(1, 'periféricos');
+
+insert into item(id, foto, nome, qtde, valor, qtdMin, fk_categoriaId) values (1, '', 'mouse logitech', 80, 135.00, 10, 1);
+select * from item;
+
+insert into produto(id, fk_itemId) values(1, 1);
+select * from produto;
