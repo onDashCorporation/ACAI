@@ -15,6 +15,7 @@ export const Container = styled.div`
   overflow-y: auto;
   width: 100%;
   height: 90vh;
+  gap: 50px;
 `;
 export const Section = styled.div`
   margin-top: 40px;
@@ -75,30 +76,41 @@ export const StyledTable = styled.table`
 
 // Componente de cabeçalho da tabela
 export const TableHeader = styled.thead`
-  th {
-    border: 1px solid #ddd;
-    padding: 10px;
     background-color: #f2f2f2;
-    font-weight: bold;
-    text-align: left;
-  }
+
+ 
+`;
+export const ThHeader = styled.th`
+
+  padding: 17px;
+  font-weight: bold;
+  text-align: left;
+  border-top-left-radius: ${({ isFirst }) => isFirst ? '5px' : '0px'};
+  border-top-right-radius: ${({ isLast }) => isLast ? '5px' : '0'};
+
+`;
+
+export const TrHeader = styled.tr`
+
+
 `;
 
 // Componente de corpo da tabela
 export const TableBody = styled.tbody`
-  tr {
-    &:nth-child(even) {
-      background-color: #f2f2f2;
-    }
+
+`;
+export const TrBody = styled.tr`
 
     &:hover {
-      background-color: #ddd;
+      background-color: #f2f2f2;
     }
-  }
+  `;
+export const TdBody = styled.td`
 
-  td {
-    border: 1px solid #ddd;
-    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    padding: 20px;
     text-align: left;
-  }
-`;
+  `;
+  export const ImageCell = styled.img`
+  width: 25px;
+  `;
