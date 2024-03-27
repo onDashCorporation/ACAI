@@ -60,6 +60,8 @@ FROM
 	item as i
 INNER JOIN
 	categoria as c on i.id = c.id;
+    
+-- VER ITEM, PRODUTO E CATEGORIA
 
 SELECT 
 	i.id, i.foto, i.nome, i.qtde, i.valor, i.qtdMin, c.id, c.nome, p.id
@@ -73,36 +75,40 @@ INNER JOIN
     
     
 -- view e join da tabela estoque, dependente da tabela de tipomovi, categoria, produto e item
-CREATE VIEW vw_produtos AS
-SELECT
-    estoque.id, 
-    estoque.nome, 
-    estoque.qtdeTotal, 
-    categoria.nome AS categoria_nome, 
-    tipomovi.tipo AS tipo_movimento, 
-    produto.id AS id_produto, 
-    item.nome AS nome_item,
-    item.qtde AS quantidade_item
+CREATE VIEW view_estoque AS
+SELECT 
+    e.id AS estoque_id,
+    e.nome AS nome_produto,
+    e.qtdeTotal,
+    c.nome AS nome_categoria,
+    tm.tipo AS tipo_movimentacao
 FROM 
-    estoque 
-INNER JOIN 
-    categoria ON estoque.fk_categoriaId = categoria.id
-INNER JOIN 
-    tipomovi ON estoque.fk_tipoMoviId = tipomovi.id
-INNER JOIN 
-    produto ON estoque.fk_produtoId = produto.id
-INNER JOIN 
-    item ON estoque.fk_itemId = item.id;
+    estoque e
+JOIN 
+    categoria c ON e.fk_categoriaId = c.id
+JOIN 
+    tipomovi tm ON e.fk_tipoMoviId = tm.id;
+    
+SELECT * FROM view_estoque;
 
+SELECT * from vw_produtos;
 -- joins da tabela de solicitacao deproduto
-SELECT
-    solicitacaoProd.id, solicitacaoProd.data, solicitacaoProd.qtde, solicitacaoProd.preco, item.nome AS item_nome
-FROM
-    solicitacaoProd
-INNER JOIN
-    produto ON solicitacaoProd.fk_produtoId = produto.id
-INNER  JOIN
-    item ON solicitacaoProd.fk_itemId = item.id;
+SELECT 
+    sp.id AS solicitacao_id,
+    sp.data,
+    p.nome AS nome_produto,
+    sp.qtde,
+    sp.preco,
+    i.nome AS nome_item,
+    tm.tipo AS tipo_movimentacao
+FROM 
+    solicitacaoProd as sp
+JOIN 
+    produto as p ON sp.fk_produtoId = p.id
+JOIN 
+    item as i ON sp.fk_itemId = i.id
+JOIN 
+    tipomovi as tm ON sp.fk_tipoMoviId = tm.id;
     
 -- view e joins da tabela de controle
 

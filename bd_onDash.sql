@@ -95,6 +95,7 @@ create table estoque(
     foreign key (fk_produtoId) references produto(id),
     foreign key (fk_itemId) references item(id)
 ); -- essa tabela será uma view de todos os produtos existentes e todos as movimentações feitas --
+select * from estoque;
 
 -- TABELA DEPENDENTE DE TUDO RELACIONADO AO USUARIO, TIPOMOVI, PRODUTO E ITEM --
 create table solicitacaoProd(

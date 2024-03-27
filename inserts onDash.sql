@@ -40,4 +40,18 @@ insert into item(id, foto, nome, qtde, valor, qtdMin, fk_categoriaId) values (1,
 select * from item;
 
 insert into produto(id, fk_itemId) values(1, 1);
+
+insert into estoque (id, nome, qtdeTotal, fk_categoriaId, fk_tipoMoviId, fk_produtoId, fk_itemId) values (1,'Mouse Logitech', 80, 1, 1, 1, 1);
+
+
 select * from produto;
+
+-- inserts ligados aos tipos de movimentações 
+insert into tipomovi(id, tipo) values
+(1, 'entrada'),
+(2, 'saída');
+
+insert into solicitacaoProd(id, data, fk_produtoId, qtde, preco, fk_itemId, fk_tipoMoviId) values
+(1, '2024-03-27' , 1, 50, 135.00, 1, 1);
+
+select * from solicitacaoProd;
