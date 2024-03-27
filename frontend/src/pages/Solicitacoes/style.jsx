@@ -67,11 +67,15 @@ export const SearchContainer = styled.div`
 export const TableContainer = styled.div`
   width: 90%;
   height: 900px;
+  margin-bottom: 5%;
 `;
 
 export const StyledTable = styled.table`
   width: 100%;
   border-collapse: collapse;
+-webkit-box-shadow: 1px 5px 17px -7px rgba(173,170,173,0.98);
+-moz-box-shadow: 1px 5px 17px -7px rgba(173,170,173,0.98);
+box-shadow: 1px 5px 17px -7px rgba(173,170,173,0.98);
 `;
 
 // Componente de cabeçalho da tabela
@@ -102,15 +106,33 @@ export const TableBody = styled.tbody`
 export const TrBody = styled.tr`
 
     &:hover {
-      background-color: #f2f2f2;
+      background-color: #fbfbfb;
     }
   `;
-export const TdBody = styled.td`
+// export const TdBody = styled.td`
 
-    border-bottom: 1px solid #ddd;
-    padding: 20px;
-    text-align: left;
-  `;
+//     border-bottom: 1px solid #ddd;
+//     padding: 20px;
+//     text-align: left;
+//   `;
   export const ImageCell = styled.img`
   width: 25px;
   `;
+
+export const TableCell = styled.td`
+  /* Estilos padrão */
+`;
+
+export const StyledTableCell = styled(TableCell)`
+  ${(props) => props.styles}
+  border-bottom: 1px solid #ddd;
+    padding: 20px;
+    text-align: left;
+`;
+
+export const PaginationConatiner = styled.div`
+width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: right;
+`
