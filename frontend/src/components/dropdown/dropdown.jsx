@@ -4,7 +4,7 @@ import * as S from "./style"
 const Dropdown = ({filterop, setFilterop}) => {
 
     const [isActive, setIsActive] = useState(false);
-    const options = ["Categoria","Tipo", "Departamento", "address" ]
+    const options = ["Data","Id", "Departamento", "Status", "Nome" ]
 
 
 
